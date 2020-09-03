@@ -21,19 +21,20 @@ export class TiempoActualComponent implements OnInit {
     this.loc$ = store.pipe(select("loc"));
     this.loc$.subscribe((loc) => {
       this.loc = loc;
-      this.searchWeather(loc);
+      this.searchWeatherTiempoActual(loc);
     });
   }
 
 
   ngOnInit() {}
 
-  searchWeather(loc: string) {
+  searchWeatherTiempoActual(loc: string) {
     this.msg = "";
     this.currentWeather = {};
     this.weatherService.getCurrentWeather(loc).subscribe(
       (res) => {
         this.currentWeather = res;
+        console.log(this.currentWeather);
       },
       (err) => {
         if (err.error && err.error.message) {
@@ -46,6 +47,7 @@ export class TiempoActualComponent implements OnInit {
       () => {}
     );
   }
+
   resultFound() {
     // console.log(this.currentWeather);
     return Object.keys(this.currentWeather).length > 0;

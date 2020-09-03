@@ -20,6 +20,8 @@ export class WeatherService {
       `${environment.apiUrl}/weather?q=${loc}&appid=${apiKey}`
     );
   }
+
+  
   getForecast(loc: string) {
     return this.http.get(
       `${environment.apiUrl}/forecast?q=${loc}&appid=${apiKey}`

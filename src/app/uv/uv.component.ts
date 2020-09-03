@@ -20,12 +20,12 @@ export class UvComponent implements OnInit {
     this.loc$ = store.pipe(select("loc"));
     this.loc$.subscribe((loc) => {
       this.loc = loc;
-      this.searchWeather(loc);
+      this.searchWeatherasd(loc);
     });
   }
   ngOnInit() {}
 
-  searchWeather(loc: string) {
+  searchWeatherasd(loc: string) {
     this.msg = "";
     this.currentWeather = {};
     this.weatherService.getCurrentWeather(loc).subscribe(

@@ -14,6 +14,7 @@ export class PronostricoComponent implements OnInit {
   currentWeather: any = <any>{};
   forecast: any = <any>{};
   msg: string;
+
   constructor(
     private store: Store<any>,
     private weatherService: WeatherService
@@ -21,11 +22,12 @@ export class PronostricoComponent implements OnInit {
     this.loc$ = store.pipe(select("loc"));
     this.loc$.subscribe((loc) => {
       this.loc = loc;
-      this.searchWeather(loc);
+      this.searchWeatherPronostico(loc);
     });
   }
   ngOnInit() {}
-  searchWeather(loc: string) {
+
+  searchWeatherPronostico(loc: string) {
     this.msg = "";
     this.currentWeather = {};
     this.weatherService.getCurrentWeather(loc).subscribe(
@@ -34,11 +36,11 @@ export class PronostricoComponent implements OnInit {
       },
       (err) => {},
       () => {
-        this.searchForecast(loc);
+        this.searchForecastPronostico(loc);
       }
     );
   }
-  searchForecast(loc: string) {
+  searchForecastPronostico(loc: string) {
     this.weatherService.getForecast(loc).subscribe(
       (res) => {
         this.forecast = res;
