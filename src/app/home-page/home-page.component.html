@@ -1,13 +1,14 @@
-<app-top-bar></app-top-bar>
+<app-top-bar (childToParent)='childToParent($event)'></app-top-bar>
+
 <div id='container'>
     <div *ngIf='!loc' id='search'>
         <h1>Ingresar la ciudad</h1>
     </div>
 
-    
+
     <mat-tab-group *ngIf='loc'>
         <mat-tab label="Tiempo Actual">
-            <app-tiempo-actual></app-tiempo-actual>
+            <app-tiempo-actual [childToMaster]=loc2></app-tiempo-actual>
         </mat-tab>
         <mat-tab label="Pronostrico">
             <app-pronostrico></app-pronostrico>
@@ -18,4 +19,4 @@
     </mat-tab-group>
 
 </div>
-<!-- <h1>{{test}}</h1> -->
+<app-padre></app-padre>
