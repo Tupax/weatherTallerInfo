@@ -1,8 +1,8 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
-
 import { WeatherService } from "./weather.service";
+import { AuthService } from "./auth.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule } from "@angular/forms";
@@ -18,6 +18,10 @@ import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from "@angular/material/divider";
 import { HttpClientModule } from "@angular/common/http";
 
+import { AngularFireLite } from "angularfire-lite";
+import { CovidModule } from "./covid/covid.module";
+import { NguiAutoCompleteModule } from "@ngui/auto-complete";
+
 import { AppComponent } from "./app.component";
 import { HomePageComponent } from "./home-page/home-page.component";
 import { TopBarComponent } from "./top-bar/top-bar.component";
@@ -25,6 +29,12 @@ import { TiempoActualComponent } from "./tiempo-actual/tiempo-actual.component";
 import { PronostricoComponent } from "./pronostrico/pronostrico.component";
 import { UvComponent } from "./uv/uv.component";
 import { AlertasComponent } from "./alertas/alertas.component";
+import { TestComponent } from "./test/test.component";
+import { environment } from "src/environments/environment";
+import { ErrorComponent } from "./error/error.component";
+import { LoginComponent } from "./login/login.component";
+import { HijoComponent } from './hijo/hijo.component';
+import { PadreComponent } from './padre/padre.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +45,17 @@ import { AlertasComponent } from "./alertas/alertas.component";
     PronostricoComponent,
     UvComponent,
     AlertasComponent,
+    TestComponent,
+    ErrorComponent,
+    LoginComponent,
+    HijoComponent,
+    PadreComponent,
   ],
   imports: [
     BrowserModule,
-    // AppRoutingModule,
+    AngularFireLite.forRoot(environment.config),
+    NguiAutoCompleteModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
@@ -52,8 +69,9 @@ import { AlertasComponent } from "./alertas/alertas.component";
     HttpClientModule,
     MatDividerModule,
     MatListModule,
+    CovidModule,
   ],
-  providers: [WeatherService],
+  providers: [WeatherService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
