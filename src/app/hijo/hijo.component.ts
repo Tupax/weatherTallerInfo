@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./hijo.component.css"],
 })
 export class HijoComponent implements OnInit {
-  @Input() testhijo: string;
+  @Input() testhijo:any;
   @Output() clickHijo = new EventEmitter();
   counter = 0;
 
@@ -24,6 +24,5 @@ export class HijoComponent implements OnInit {
 
   botonClick() {
     this.clickHijo.emit(this.counter);
-    console.log(this.counter);
   }
 }

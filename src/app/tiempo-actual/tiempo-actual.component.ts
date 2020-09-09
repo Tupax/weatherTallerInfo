@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { Store, select } from "@ngrx/store";
 import { WeatherService } from "../weather.service";
@@ -13,7 +13,9 @@ export class TiempoActualComponent implements OnInit {
   loc: string;
   currentWeather: any = <any>{};
   msg: string;
-  
+  errorMessage: string;
+  @Input("childToMaster") masterName: string;
+
   constructor(
     private store: Store<any>,
     private weatherService: WeatherService
@@ -21,12 +23,18 @@ export class TiempoActualComponent implements OnInit {
     this.loc$ = store.pipe(select("loc"));
     this.loc$.subscribe((loc) => {
       this.loc = loc;
-      this.searchWeatherTiempoActual(loc);
+      // this.searchWeatherTiempoActual(loc);
     });
   }
 
+  ngOnInit() {
+    this.searchWeatherTiempoActual(this.masterName);
+    console.log("from tiempo ", this.masterName);
+  }
 
-  ngOnInit() {}
+  show() {
+    console.log("from tiempo ", this.masterName);
+  }
 
   searchWeatherTiempoActual(loc: string) {
     this.msg = "";
@@ -39,7 +47,11 @@ export class TiempoActualComponent implements OnInit {
       (err) => {
         if (err.error && err.error.message) {
           // alert(err.error.message);
+          console.log(err);
+          console.log(err.error);
+          this.errorMessage = err.error.message;
           this.msg = err.error.message;
+          setTimeout(() => (this.errorMessage = ""), 2000);
           return;
         }
         alert("Error al intentar conseguir el clima.");

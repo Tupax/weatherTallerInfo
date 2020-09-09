@@ -33,8 +33,8 @@ import { TestComponent } from "./test/test.component";
 import { environment } from "src/environments/environment";
 import { ErrorComponent } from "./error/error.component";
 import { LoginComponent } from "./login/login.component";
-import { HijoComponent } from './hijo/hijo.component';
-import { PadreComponent } from './padre/padre.component';
+import { HijoComponent } from "./hijo/hijo.component";
+import { PadreComponent } from "./padre/padre.component";
 
 @NgModule({
   declarations: [

@@ -22,33 +22,34 @@ export class PronostricoComponent implements OnInit {
     this.loc$ = store.pipe(select("loc"));
     this.loc$.subscribe((loc) => {
       this.loc = loc;
-      this.searchWeatherPronostico(loc);
+      this.searchForecastPronostico(loc);
     });
   }
   ngOnInit() {}
 
-  searchWeatherPronostico(loc: string) {
-    this.msg = "";
-    this.currentWeather = {};
-    this.weatherService.getCurrentWeather(loc).subscribe(
-      (res) => {
-        this.currentWeather = res;
-      },
-      (err) => {},
-      () => {
-        this.searchForecastPronostico(loc);
-      }
-    );
-  }
+  // searchWeatherPronostico(loc: string) {
+  //   this.msg = "";
+  //   this.currentWeather = {};
+  //   this.weatherService.getCurrentWeather(loc).subscribe(
+  //     (res) => {
+  //       this.currentWeather = res;
+  //     },
+  //     (err) => {},
+  //     () => {
+  //       this.searchForecastPronostico(loc);
+  //     }
+  //   );
+  // }
   searchForecastPronostico(loc: string) {
     this.weatherService.getForecast(loc).subscribe(
       (res) => {
         this.forecast = res;
+        console.log(this.forecast);
       },
       (err) => {}
     );
   }
   resultFound() {
-    return Object.keys(this.currentWeather).length > 0;
+    return Object.keys(this.forecast).length > 0;
   }
 }

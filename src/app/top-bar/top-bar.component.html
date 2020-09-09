@@ -1,9 +1,21 @@
 <mat-toolbar>
   <span id='title'>Weather App</span>
-  <form (ngSubmit)='search(searchForm)' #searchForm='ngForm'>
+  <mat-form-field class="form-field">
+    <input matInput placeholder="Buscar" [(ngModel)]='loc' name='lo' required type='text' [source]='capitales'
+      [max-num-list]="5" auto-complete (keyup.enter)="search(lo.value)" #lo>
+    <mat-error *ngIf="lo.invalid && (lo.dirty || lo.touched)">
+      <span *ngIf='lo.errors.required'>
+        Se requiere una locación.
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <button mat-button (click)="search(lo.value)">Buscar</button>
+  <!-- [close-on-focusout]="false" -->
+
+  <!-- <form (ngSubmit)='search(searchForm)' #searchForm='ngForm'>
     <mat-form-field class="form-field">
-      <input matInput placeholder="Buscar" [(ngModel)]='loc' #lo='ngModel' name='lo' required type='text'
-        autocomplete="off">
+      <input matInput placeholder="Buscar" [(ngModel)]='loc' #lo='ngModel' name='lo' required type='text' auto-complete
+        keyup.enter>
       <mat-error *ngIf="lo.invalid && (lo.dirty || lo.touched)">
         <span *ngIf='lo.errors.required'>
           Se requiere una locación.
@@ -11,7 +23,7 @@
       </mat-error>
     </mat-form-field>
     <button mat-button type='submit'>Buscar</button>
-  </form>
+  </form> -->
 
-  <h1>{{loc}}</h1>
+  <!-- <h1>{{loc}}</h1> -->
 </mat-toolbar>
