@@ -5,8 +5,7 @@ import { WeatherService } from "./weather.service";
 import { AuthService } from "./auth.service";
 
 import { AppRoutingModule } from "./app-routing.module";
-import { FormsModule } from "@angular/forms";
-import { StoreModule } from "@ngrx/store";
+
 import { locationReducer } from "./location-reducer";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatButtonModule } from "@angular/material/button";
@@ -16,8 +15,11 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatCardModule } from "@angular/material/card";
 import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from "@angular/material/divider";
-import { HttpClientModule } from "@angular/common/http";
+import { MatIconModule } from "@angular/material/icon";
 
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+import { StoreModule } from "@ngrx/store";
 import { AngularFireLite } from "angularfire-lite";
 import { CovidModule } from "./covid/covid.module";
 import { NguiAutoCompleteModule } from "@ngui/auto-complete";
@@ -70,6 +72,7 @@ import { PadreComponent } from "./padre/padre.component";
     MatDividerModule,
     MatListModule,
     CovidModule,
+    MatIconModule,
   ],
   providers: [WeatherService, AuthService],
   bootstrap: [AppComponent],

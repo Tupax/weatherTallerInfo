@@ -52,3 +52,12 @@
 .ngui-auto-complete ul {
   background-color: green !important;
 }
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.activo {
+  background-color: red;
+  color: green;
+}

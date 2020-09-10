@@ -1,8 +1,10 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <mat-toolbar>
   <span id='title'>Weather App</span>
   <mat-form-field class="form-field">
     <input matInput placeholder="Buscar" [(ngModel)]='loc' name='lo' required type='text' [source]='capitales'
-      [max-num-list]="5" auto-complete (keyup.enter)="search(lo.value)" #lo>
+      [max-num-list]="10" auto-complete (keyup.enter)="search(lo.value)" #lo>
     <mat-error *ngIf="lo.invalid && (lo.dirty || lo.touched)">
       <span *ngIf='lo.errors.required'>
         Se requiere una locación.
@@ -11,6 +13,22 @@
   </mat-form-field>
   <button mat-button (click)="search(lo.value)">Buscar</button>
   <!-- [close-on-focusout]="false" -->
+
+
+
+  <span class="example-spacer"></span>
+
+
+  <button routerLinkActive="activo" routerLink="/" mat-icon-button class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button routerLinkActive="activo" routerLink="login" mat-icon-button class="example-icon"
+    aria-label="Example icon-button with share icon">
+    <mat-icon>login</mat-icon>
+  </button>
+
+
 
   <!-- <form (ngSubmit)='search(searchForm)' #searchForm='ngForm'>
     <mat-form-field class="form-field">
